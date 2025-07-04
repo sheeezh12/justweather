@@ -3,7 +3,7 @@ header {
       background-color: #4DA8DA; 
       color: #FFFFFF;
       text-align: center;
-      padding: 60px 20px;
+      padding: 120px 20px;
     }
 
     header h1 {
@@ -32,3 +32,137 @@ header {
     .forecast-btn:hover {
       background-color: #FFD700;
     }
+    
+    body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+    #weather-form {
+    background-color: #4DA8DA;
+    padding: 100px 20px;
+    text-align: center;
+    color: #FFFFFF;
+    }
+
+    #weather-form h2 {
+    font-size: 2.4rem;
+    }
+
+    #weather-form p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    }
+
+    #cityForm {
+    margin-top: 35px;
+    }
+
+    #cityInput {
+    padding: 14px 22px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    width: 260px;
+    }
+
+    #cityForm button {
+    margin-left: 10px;
+    padding: 14px 22px;
+    background-color: #F4D35E;
+    color: #16324F;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    }
+
+    #weather-result {
+    padding: 50px 20px;
+    background-color: #A9BCC8;
+    color: #16324F;
+    text-align: center;
+    }
+
+    #weather-result h3 {
+    font-size: 2rem;
+    }
+
+    #weather-result div {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    }
+
+    .quote {
+    margin-top: 30px;
+    font-style: italic;
+    }
+:root {
+  --blue-light: #4DA8DA;
+  --blue-dark: #16324F;
+  --yellow-bright: #F4D35E;
+  --gray-soft: #A9BCC8;
+  --white: #FFFFFF;
+}
+
+#weather-result {
+  background-color: var(--blue-light);
+  color: var(--blue-dark);
+  padding: 50px 20px;
+  font-family: 'Poppins', sans-serif;
+  border-top: 4px solid var(--blue-light);
+  text-align: center;
+}
+
+#weather-result h3 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #FFFFFF;
+}
+
+#weather-result .timezone {
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+.forecast-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.forecast-card {
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease;
+}
+
+.forecast-card:hover {
+  transform: scale(1.02);
+}
+
+.forecast-card p {
+  margin: 6px 0;
+  font-size: 1.05rem;
+}
+
+.forecast-card .tanggal {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.quote {
+  margin-top: 40px;
+  font-style: italic;
+  font-size: 1rem;
+  opacity: 0.8;
+  color: var(--blue-dark);
+}

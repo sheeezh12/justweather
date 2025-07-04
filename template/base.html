@@ -11,10 +11,49 @@
     </head>
     <body>
          <header>
-            <h1>Get Your Weather Forecast</h1>
-            <p>Real-time updates for sunny days and stormy moods.</p>
-            <button class="forecast-btn" onclick="simulateCloud()">Simulate Cloudy</button>
+            <h1>Cari Prakiraan Cuaca Di sini</h1>
+            <p>Real time updates for sunny days and stormy weather.</p>
+            <button class="forecast-btn">Find Out!</button>
+            <br>
         </header>
+       
+        <main>
+            <section id="weather-form">
+            <h2>Kenapa harus cek disini?</h2>
+            <p>Cuaca bisa saja berubah secara tiba-tiba. Dengan halaman ini, kamu dapat mendapatkan informasi cuaca hari ini dengan mudah dan akurat. Sehingga, kamu tidak perlu khawatir cuaca akan mengganggu aktivitas harianmu</p>
+            
+            </section>
+            
+            <section id="weather-form">
+            <h2>Cek di sini!</h2>
+            <p>Cuaca mungkin tak bisa kamu kendalikan, tapi persiapanmu bisa menjadi kekuatan terbesar.</p>
+            <form method="POST" action="/forecast">
+                <input type="text" id="cityInput" name="city" placeholder="Masukkan nama kota..." required>
+                <p></p>
+                <button type="submit" class="forecast-btn">Cari Ramalan</button>
+            </form>
+            </section>
+            {% if data %}
+            <section id="weather-result">
+                <h3>Cuaca Harian di {{ city }}</h3>
+                <p class="timezone">Zona Waktu: <strong>{{ timezone }}</strong></p>
+
+                <div class="forecast-list">
+                    {% for i in range(data.time | length) %}
+                        <div class="forecast-card">
+                            <p class="tanggal">{{ data.time[i] }}</p>
+                            <p>Suhu Maksimum: {{ data.temperature_2m_max[i] }}°C</p>
+                            <p>Suhu Minimum: {{ data.temperature_2m_min[i] }}°C</p>
+                            <p>Curah Hujan: {{ data.precipitation_sum[i] }} mm</p>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <p class="quote">"Cuaca bisa berubah tiba-tiba, tapi keputusan tetap di tanganmu."</p>
+            </section>
+            {% endif %}
+        </main>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     </body>
 </html>
