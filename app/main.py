@@ -46,7 +46,7 @@ def main():
 @app.route("/forecast", methods=["POST"])
 def forecast():
     raw_city = request.form.get("city", "")
-    city = escape(raw_city.strip())  # Hindari XSS dan pastikan rapi
+    city = escape(raw_city.strip())  
 
     if not is_valid_city(city):
         error = "Nama kota tidak valid."

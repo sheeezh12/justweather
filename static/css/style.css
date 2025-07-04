@@ -1,110 +1,90 @@
-header {
-      font-family: 'Poppins', sans-serif;
-      background-color: #4DA8DA; 
-      color: #FFFFFF;
-      text-align: center;
-      padding: 120px 20px;
-    }
-
-    header h1 {
-      font-size: 2.6rem;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      margin: 0;
-    }
-
-    .forecast-btn {
-      margin-top: 25px;
-      padding: 10px 20px;
-      background-color: #F4D35E; 
-      color: #16324F; 
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .forecast-btn:hover {
-      background-color: #FFD700;
-    }
-    
-    body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    }
-
-    #weather-form {
-    background-color: #4DA8DA;
-    padding: 100px 20px;
-    text-align: center;
-    color: #FFFFFF;
-    }
-
-    #weather-form h2 {
-    font-size: 2.4rem;
-    }
-
-    #weather-form p {
-    font-size: 1.1rem;
-    margin-top: 10px;
-    }
-
-    #cityForm {
-    margin-top: 35px;
-    }
-
-    #cityInput {
-    padding: 14px 22px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 10px;
-    width: 260px;
-    }
-
-    #cityForm button {
-    margin-left: 10px;
-    padding: 14px 22px;
-    background-color: #F4D35E;
-    color: #16324F;
-    font-weight: bold;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    }
-
-    #weather-result {
-    padding: 50px 20px;
-    background-color: #A9BCC8;
-    color: #16324F;
-    text-align: center;
-    }
-
-    #weather-result h3 {
-    font-size: 2rem;
-    }
-
-    #weather-result div {
-    font-size: 1.2rem;
-    margin-top: 20px;
-    }
-
-    .quote {
-    margin-top: 30px;
-    font-style: italic;
-    }
 :root {
   --blue-light: #4DA8DA;
   --blue-dark: #16324F;
   --yellow-bright: #F4D35E;
   --gray-soft: #A9BCC8;
   --white: #FFFFFF;
+}
+
+header {
+  font-family: 'Poppins', sans-serif;
+  background-color: #4DA8DA;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 120px 20px;
+}
+
+header h1 {
+  font-size: 2.6rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.forecast-btn {
+  margin-top: 25px;
+  padding: 10px 20px;
+  background-color: #F4D35E;
+  color: #16324F;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.forecast-btn:hover {
+  background-color: #FFD700;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#weather-form {
+  background-color: #4DA8DA;
+  padding: 100px 20px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+#weather-form h2 {
+  font-size: 2.4rem;
+}
+
+#weather-form p {
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+#cityForm {
+  margin-top: 35px;
+}
+
+#cityInput {
+  padding: 14px 22px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  width: 260px;
+}
+
+#cityForm button {
+  margin-left: 10px;
+  padding: 14px 22px;
+  background-color: #F4D35E;
+  color: #16324F;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 #weather-result {
