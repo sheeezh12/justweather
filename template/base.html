@@ -14,7 +14,7 @@
          <header >
             <h1 data-aos="zoom-in" data-aos-duration="500">Cari Prakiraan Cuaca Di sini</h1>
             <p data-aos="zoom-in" data-aos-duration="500">Real time updates for sunny days and stormy weather.</p>
-            <button class="forecast-btn" data-aos="zoom-in" data-aos-duration="500">Find Out!</button>
+            <button class="forecast-btn" data-aos="zoom-in" data-aos-duration="500" onclick="document.getElementById('weather-form').scrollIntoView();">Find Out!</button>
             <br>
         </header>
        
@@ -33,13 +33,15 @@
                     <form method="POST" action="/forecast">
                         <input type="text" id="cityInput" name="city" placeholder="Masukkan nama kota..." required>
                         <p></p>
-                        <button type="submit" class="forecast-btn">Cari Ramalan</button>
+                        <button type="submit" class="forecast-btn">Cari Prakiraan</button>
                     </form>
                 </div>
             </section>
             {% if data %}
             <section id="weather-result">
-                <h3>Cuaca Harian di {{ city }}</h3>
+                {% if display_name %}
+                <h3>Cuaca Harian di {{ display_name }}</h3>
+                {% endif %}
                 <p class="timezone">Zona Waktu: <strong>{{ timezone }}</strong></p>
 
                 <div class="forecast-scroll-wrapper">
@@ -48,10 +50,10 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">{{ data.time[i] }}</h5>
+                                <h5 class="card-title">Cuaca: {{ get_weather_description(data.weathercode[i]) }}</h5>
                                 <p class="card-text">Suhu Maks: {{ data.temperature_2m_max[i] }}°C</p>
                                 <p class="card-text">Suhu Min: {{ data.temperature_2m_min[i] }}°C</p>
                                 <p class="card-text">Curah Hujan: {{ data.precipitation_sum[i] }} mm</p>
-                                <p class="card-text">Weather Code: {{ data.weathercode[i] }} mm</p>
                             </div>
                         </div>
                         {% endfor %}

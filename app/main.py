@@ -14,9 +14,6 @@ def is_valid_city(city):
     city = city.strip()
     return bool(re.match(r"^[a-zA-Z\s\-]{1,40}$", city))
 
-
-import requests
-
 def get_coord(city):
     url = "https://nominatim.openstreetmap.org/search"
     params = {
@@ -27,7 +24,7 @@ def get_coord(city):
         "accept-language": "id"
     }
     headers = {
-        "User-Agent": "cuaca-app/1.0 (Reno)"
+        "User-Agent": "JustWeather v1.0"
     }
 
     try:
@@ -36,21 +33,21 @@ def get_coord(city):
         data = response.json()
 
         if not data:
-            return None, None
+            return None, None, None
 
         loc = data[0]
         lat = float(loc["lat"])
         lon = float(loc["lon"])
-
+        display_name = loc.get("display_name", "")
         place_type = loc.get("type", "")
-        if place_type not in ["city", "town", "village", "municipality"]:
-            return None, None
 
-        return lat, lon
-    
+        if place_type not in ["city", "town", "village", "municipality", "administrative"]:
+            return None, None, None
+
+        return lat, lon, display_name
 
     except (requests.RequestException, ValueError, IndexError):
-        return None, None
+        return None, None, None
 
 def get_forecast(lat, lon):
     url = "https://api.open-meteo.com/v1/forecast"
@@ -62,6 +59,30 @@ def get_forecast(lat, lon):
     }
     resp = requests.get(url, params=params).json()
     return resp
+
+WEATHER_CODES = {
+    0: "Cerah",
+    1: "Sebagian cerah",
+    2: "Sebagian berawan",
+    3: "Berawan penuh",
+    45: "Berkabut",
+    48: "Berkabut (embun beku)",
+    51: "Gerimis ringan",
+    53: "Gerimis sedang",
+    55: "Gerimis lebat",
+    61: "Hujan ringan",
+    63: "Hujan sedang",
+    65: "Hujan deras",
+    80: "Hujan lokal",
+    81: "Hujan lokal sedang",
+    82: "Hujan lokal deras",
+    95: "Badai petir",
+    96: "Badai petir + hujan es ringan",
+    99: "Badai petir + hujan es deras"
+}
+
+def get_weather_description(code):
+    return WEATHER_CODES.get(int(code), "Tidak diketahui")
 
 
 
@@ -91,7 +112,8 @@ def forecast():
     daily = data.get("daily", {})
     timezone = data.get("timezone", "Asia/Jakarta")
 
-    return render_template("base.html", city=city, data=daily, timezone=timezone, display_name=display_name)
+    return render_template("base.html", city=city, data=daily, timezone=timezone, display_name=display_name, get_weather_description=get_weather_description
+)
 
 if __name__ == "__main__":
     app.run(debug=True)
