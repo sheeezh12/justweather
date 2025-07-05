@@ -6,47 +6,56 @@
         <title>JustWeather</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </head>
     <body>
-         <header>
-            <h1>Cari Prakiraan Cuaca Di sini</h1>
-            <p>Real time updates for sunny days and stormy weather.</p>
-            <button class="forecast-btn">Find Out!</button>
+         <header >
+            <h1 data-aos="zoom-in" data-aos-duration="500">Cari Prakiraan Cuaca Di sini</h1>
+            <p data-aos="zoom-in" data-aos-duration="500">Real time updates for sunny days and stormy weather.</p>
+            <button class="forecast-btn" data-aos="zoom-in" data-aos-duration="500">Find Out!</button>
             <br>
         </header>
        
         <main>
             <section id="weather-form">
-            <h2>Kenapa harus cek disini?</h2>
-            <p>Cuaca bisa saja berubah secara tiba-tiba. Dengan halaman ini, kamu dapat mendapatkan informasi cuaca hari ini dengan mudah dan akurat. Sehingga, kamu tidak perlu khawatir cuaca akan mengganggu aktivitas harianmu</p>
-            
+                <div data-aos="fade-up" data-aos-duration="1600">
+                    <h2>Kenapa harus cek disini?</h2>
+                    <p>Cuaca bisa saja berubah secara tiba-tiba. Dengan halaman ini, kamu dapat mendapatkan informasi cuaca hari ini dengan mudah dan akurat. Sehingga, kamu tidak perlu khawatir cuaca akan mengganggu aktivitas harianmu</p>
+                </div>
             </section>
             
             <section id="weather-form">
-            <h2>Cek di sini!</h2>
-            <p>Cuaca mungkin tak bisa kamu kendalikan, tapi persiapanmu bisa menjadi kekuatan terbesar.</p>
-            <form method="POST" action="/forecast">
-                <input type="text" id="cityInput" name="city" placeholder="Masukkan nama kota..." required>
-                <p></p>
-                <button type="submit" class="forecast-btn">Cari Ramalan</button>
-            </form>
+                <div class="maintext" data-aos="fade-down" data-aos-duration="1600">
+                    <h2>Cek di sini!</h2>
+                    <p>Cuaca mungkin tak bisa kamu kendalikan, tapi persiapanmu bisa menjadi kekuatan terbesar.</p>
+                    <form method="POST" action="/forecast">
+                        <input type="text" id="cityInput" name="city" placeholder="Masukkan nama kota..." required>
+                        <p></p>
+                        <button type="submit" class="forecast-btn">Cari Ramalan</button>
+                    </form>
+                </div>
             </section>
             {% if data %}
             <section id="weather-result">
                 <h3>Cuaca Harian di {{ city }}</h3>
                 <p class="timezone">Zona Waktu: <strong>{{ timezone }}</strong></p>
 
-                <div class="forecast-list">
-                    {% for i in range(data.time | length) %}
-                        <div class="forecast-card">
-                            <p class="tanggal">{{ data.time[i] }}</p>
-                            <p>Suhu Maksimum: {{ data.temperature_2m_max[i] }}°C</p>
-                            <p>Suhu Minimum: {{ data.temperature_2m_min[i] }}°C</p>
-                            <p>Curah Hujan: {{ data.precipitation_sum[i] }} mm</p>
+                <div class="forecast-scroll-wrapper">
+                    <div class="forecast-scroll">
+                        {% for i in range(data.time | length) %}
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ data.time[i] }}</h5>
+                                <p class="card-text">Suhu Maks: {{ data.temperature_2m_max[i] }}°C</p>
+                                <p class="card-text">Suhu Min: {{ data.temperature_2m_min[i] }}°C</p>
+                                <p class="card-text">Curah Hujan: {{ data.precipitation_sum[i] }} mm</p>
+                                <p class="card-text">Weather Code: {{ data.weathercode[i] }} mm</p>
+                            </div>
                         </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
 
                 <p class="quote">"Cuaca bisa berubah tiba-tiba, tapi keputusan tetap di tanganmu."</p>
@@ -55,5 +64,9 @@
         </main>
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
     </body>
 </html>

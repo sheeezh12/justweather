@@ -57,11 +57,26 @@ body {
 
 #weather-form h2 {
   font-size: 2.4rem;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.maintext-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.maintext {
+  position: relative;
+  display: block;
+  z-index: 0;
 }
 
 #weather-form p {
   font-size: 1.1rem;
   margin-top: 10px;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 #cityForm {
@@ -92,57 +107,71 @@ body {
   color: var(--blue-dark);
   padding: 50px 20px;
   font-family: 'Poppins', sans-serif;
-  border-top: 4px solid var(--blue-light);
   text-align: center;
+  overflow-x: hidden;
 }
 
 #weather-result h3 {
   font-size: 2rem;
-  margin-bottom: 10px;
-  color: #FFFFFF;
+  margin-bottom: 8px;
+  color: var(--white);
 }
 
 #weather-result .timezone {
   font-size: 1rem;
   margin-bottom: 30px;
+  color: var(--white);
 }
 
-.forecast-list {
+.forecast-scroll-wrapper {
+  overflow-x: auto;
+  padding-bottom: 40px;
+  scroll-behavior: smooth;
+}
+
+.forecast-scroll {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
+  flex-wrap: nowrap;
+  gap: 16px;
+  padding-bottom: 10px;
 }
 
-.forecast-card {
+.card {
   background-color: var(--white);
+  border: none;
   border-radius: 12px;
-  padding: 20px;
-  max-width: 400px;
-  width: 100%;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.06);
+  width: 18rem;
+  min-width: 280px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease;
+  flex-shrink: 0;
 }
 
-.forecast-card:hover {
-  transform: scale(1.02);
+.card:hover {
+  transform: translateY(-4px);
 }
 
-.forecast-card p {
-  margin: 6px 0;
-  font-size: 1.05rem;
+.card-body {
+  padding: 20px;
 }
 
-.forecast-card .tanggal {
-  font-weight: bold;
+.card-title {
   font-size: 1.1rem;
-  margin-bottom: 10px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: var(--blue-dark);
+}
+
+.card-text {
+  font-size: 0.95rem;
+  margin: 4px 0;
+  color: var(--blue-dark);
 }
 
 .quote {
   margin-top: 40px;
   font-style: italic;
   font-size: 1rem;
-  opacity: 0.8;
-  color: var(--blue-dark);
+  color: var(--white);
+  opacity: 0.85;
 }

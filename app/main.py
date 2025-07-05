@@ -31,7 +31,7 @@ def get_forecast(lat, lon):
     params = {
         "latitude": lat,
         "longitude": lon,
-        "daily": "temperature_2m_max,temperature_2m_min,precipitation_sum",
+        "daily": "temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode",
         "timezone": "Asia/Jakarta"
     }
     resp = requests.get(url, params=params).json()
